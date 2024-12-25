@@ -10,7 +10,7 @@ namespace PokemonApi
 
         public Task<IEnumerable<Pokemon>> GetAllPokemonsAsync() => Task.FromResult((IEnumerable<Pokemon>)_pokemons);
 
-        public Task<Pokemon> GetPokemonByIdAsync(int id)
+        public Task<Pokemon?> GetPokemonByIdAsync(int id)
         {
             return Task.FromResult(_pokemons.FirstOrDefault(p => p.Id == id));
         }

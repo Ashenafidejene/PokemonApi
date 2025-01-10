@@ -32,3 +32,9 @@ C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\obj\Debug\net8.0\refint\Pok
 C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\obj\Debug\net8.0\PokemonApi.pdb
 C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\obj\Debug\net8.0\PokemonApi.genruntimeconfig.cache
 C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\obj\Debug\net8.0\ref\PokemonApi.dll
+C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\bin\Debug\net8.0\DnsClient.dll
+C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\bin\Debug\net8.0\Snappier.dll
+C:\Users\Ashu\Desktop\gubaTech\PokemonApi\PokemonApi\bin\Debug\net8.0\ZstdSharp.dll

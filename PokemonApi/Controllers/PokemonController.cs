@@ -15,20 +15,33 @@ namespace PokemonApi.Controllers
             _pokemonService = pokemonService;
         }
 
+        // Get all Pokemons
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pokemon>>> GetAll()
         {
-            return Ok(await _pokemonService.GetAllPokemonsAsync());
+            var pokemons = await _pokemonService.GetAllPokemonsAsync();
+            return Ok(pokemons);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Pokemon>> GetById(int id)
+        // Get a Pokemon by ID
+        [HttpGet("{id:length(24)}")]
+        public async Task<ActionResult<Pokemon>> GetById(string id)
         {
             var pokemon = await _pokemonService.GetPokemonByIdAsync(id);
-            if (pokemon == null) return NotFound();
+            if (pokemon == null) return NotFound("Pokemon not found.");
             return Ok(pokemon);
         }
 
+        // Get a Pokemon by Type
+        [HttpGet("search/{type}")]
+        public async Task<ActionResult<Pokemon>> GetByType(string type)
+        {
+            var pokemon = await _pokemonService.GetPokemonByTypeAsync(type);
+            if (pokemon == null) return NotFound("Pokemon of the specified type not found.");
+            return Ok(pokemon);
+        }
+
+        // Add a new Pokemon
         [HttpPost]
         public async Task<ActionResult> AddPokemon([FromBody] Pokemon pokemon)
         {
@@ -36,19 +49,21 @@ namespace PokemonApi.Controllers
             return CreatedAtAction(nameof(GetById), new { id = pokemon.Id }, pokemon);
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult> UpdatePokemon(int id, [FromBody] Pokemon updatedPokemon)
+        // Update an existing Pokemon by ID
+        [HttpPut("{id:length(24)}")]
+        public async Task<ActionResult> UpdatePokemon(string id, [FromBody] Pokemon updatedPokemon)
         {
             var result = await _pokemonService.UpdatePokemonAsync(id, updatedPokemon);
-            if (!result) return NotFound();
+            if (!result) return NotFound("Pokemon not found for update.");
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> DeletePokemon(int id)
+        // Delete a Pokemon by ID
+        [HttpDelete("{id:length(24)}")]
+        public async Task<ActionResult> DeletePokemon(string id)
         {
             var result = await _pokemonService.DeletePokemonAsync(id);
-            if (!result) return NotFound();
+            if (!result) return NotFound("Pokemon not found for deletion.");
             return NoContent();
         }
     }

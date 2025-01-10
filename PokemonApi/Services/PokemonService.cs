@@ -1,6 +1,5 @@
 using MongoDB.Driver;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+
 
 namespace PokemonApi
 {
@@ -8,13 +7,12 @@ namespace PokemonApi
     {
         private readonly IMongoCollection<Pokemon> _pokemons;
 
-        public PokemonService(IConfiguration config)
-        {
-            var client = new MongoClient(config.GetConnectionString("PokemonDatabaseSettings:ConnectionString"));
-            var database = client.GetDatabase(config["PokemonDatabaseSettings:DatabaseName"]);
-            _pokemons = database.GetCollection<Pokemon>(config["PokemonDatabaseSettings:PokemonCollectionName"]);
-        }
-
+       public PokemonService(IConfiguration config)
+      {
+        var client = new MongoClient(config["MongoDBSettings:ConnectionString"]);
+         var database = client.GetDatabase(config["MongoDBSettings:DatabaseName"]);
+         _pokemons = database.GetCollection<Pokemon>(config["MongoDBSettings:CollectionName"]);
+     }
         public async Task<IEnumerable<Pokemon>> GetAllPokemonsAsync()
         {
             return await _pokemons.Find(_ => true).ToListAsync();
